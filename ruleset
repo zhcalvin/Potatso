@@ -1,13 +1,63 @@
-[PROFILE.A]
-name = "A"
+name = "Potatso Sample Configuration"
+author = "Potatso"
+email = "potatso.com@gmail.com"
+website = "http://manual.potatso.com"
+description = "The sample PCF. This demonstrates the basic grammar of defining a PCL."
+
+# 用户配置（Profile）
+[PROFILE.sample]
+name = "Sample Profile"
+dns = [
+  "8.8.8.8",
+  "223.5.5.5"
+]
 defaultRoute = "PROXY"
+proxy = "hk"
 rulesets = [
-    "A"
+    "direct",
+    "google"
 ]
 
-[RULESET.A]
-name = "proxy Rules"
+# 代理（Proxy）
+[PROXY.hk]
+type = "SHADOWSOCKS"
+host = "ss.example.com"
+port = 8388
+encryption = "aes-256-cfb"
+password = "DO NOT EXPOSE IT TO OTHERS"
+remark = "HK Proxy"
+
+[PROXY.us_ssr]
+type = "SHADOWSOCKSR"
+host = "ssr.example.com"
+port = 8388
+encryption = "aes-256-cfb"
+password = "DO NOT EXPOSE IT TO OTHERS"
+protocol = "auth_aes128_md5"
+protocolParam = "64#123:user"
+obfs = "tls1.2_ticket_auth"
+obfsParam = "cloudflare.com"
+remark = "HK Proxy"
+
+[PROXY.jp]
+type = "SOCKS5"
+host = "socks5.example.com"
+port = 8888
+user = "testuser"
+password = "DO NOT EXPOSE IT TO OTHERS"
+remark = "HK Proxy"
+
+# 规则集（Ruleset）
+[RULESET.direct]
+name = "Direct"
+rules = [
+    "DOMAIN-SUFFIX, cn, DIRECT",
+    "GEOIP, cn, DIRECT"
+]
+
+[RULESET.google]
+name = "Google Rules"
 rules = [
     "DOMAIN-MATCH, google, PROXY",
-    "DOMAIN-MATCH, youtube, PROXY"
+    "DOMAIN-MATCH, gstatic, PROXY"
 ]
