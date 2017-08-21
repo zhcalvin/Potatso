@@ -2,7 +2,7 @@
 name = "A"
 defaultRoute = "PROXY"
 rulesets = [
-    "proxy"
+    "A"
 ]
 
 [RULESET.A]
