@@ -1,7 +1,11 @@
+[PROFILE.A]
+name = "A"
+defaultRoute = "PROXY"
 rulesets = [
     "proxy"
 ]
 
+[RULESET.A]
 name = "proxy Rules"
 rules = [
     "DOMAIN-MATCH, google, PROXY",
