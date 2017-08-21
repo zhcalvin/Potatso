@@ -1,0 +1,9 @@
+rulesets = [
+    "proxy"
+]
+
+name = "proxy Rules"
+rules = [
+    "DOMAIN-MATCH, google, PROXY",
+    "DOMAIN-MATCH, youtube, PROXY"
+]
